@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:3000
+
+### Crear rectángulo válido (201)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{ "lado_a": 5, "lado_b": 3 }
+
+### Falta lado_b (400)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{ "lado_a": 5 }
+
+### Lado negativo (400)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{ "lado_a": -2, "lado_b": 3 }
+
+### Lado como texto (400)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{ "lado_a": "cinco", "lado_b": 3 }
+
+### Intenta mandar perimetro (400)
+POST {{baseUrl}}/rectangulos
+Content-Type: application/json
+
+{ "lado_a": 5, "lado_b": 3, "perimetro": 100 }
