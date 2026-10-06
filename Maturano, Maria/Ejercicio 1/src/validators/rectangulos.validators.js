@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 
 const validarLado = (campo) =>
   body(campo)
@@ -19,4 +19,10 @@ export const validarCreacion = [
   rechazarCalculados,
   validarLado("lado_a"),
   validarLado("lado_b"),
+];
+
+export const validarId = [
+  param("id")
+    .isInt({ min: 1, max: 4294967295 })
+    .withMessage("id debe ser un número entero positivo"),
 ];
